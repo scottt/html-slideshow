@@ -5,18 +5,27 @@
  * MIT Licensed: http://www.opensource.org/licenses/mit-license.php
  */
  
+if (window.slider === undefined) {
+    slider = { initOnDocumentReady: true };
+}
 (function() {
     
-    //Initialize variables and cache jQuery objects
-    var currentSlide = 1,
-        slideHash = location.hash,
-        deck = $('#deck'),
-        slideCount = $('#deck > section').size(),
-        prevButton = $('#prev-btn'),
-        nextButton = $('#next-btn'),
-        slideNumber = $('#slide-number');
+    var currentSlide, slideHash, deck, slideCount, prevButton, nextButton, slideNumber;
     
     var sliderInit = function(options) {
+        //Initialize variables and cache jQuery objects
+        currentSlide = 1;
+        slideHash = location.hash;
+        deck = $('#deck');
+        slideCount = $('#deck > section').size();
+        prevButton = $('#prev-btn');
+        nextButton = $('#next-btn');
+        slideNumber = $('#slide-number');
+
+        //Bind control events
+        prevButton.bind('click', prevSlide);
+        nextButton.bind('click', showActions);
+        $('html').bind('keydown', keyControls);
         
         //Add ids and classes to slides
         $('#deck > section').each(function(index,el){
@@ -129,14 +138,12 @@
         }
     }    
     
-    //Bind control events
-    prevButton.bind('click', prevSlide);
-    nextButton.bind('click', showActions);
-    $('html').bind('keydown', keyControls);
-    
-    //Do our business when the DOM is ready
-    $(function(){
-        sliderInit({hideMenu: true});
-    });
-    
+    if (slider.initOnDocumentReady) {
+        //Do our business when the DOM is ready
+        $(function(){
+            sliderInit({hideMenu: true});
+        });
+    } else {
+        slider.init = sliderInit;
+    }
 })();

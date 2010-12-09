@@ -1,10 +1,10 @@
-# Lightweight HTML5-based slideshow
-This is a mini web app for people who'd rather build slides with HTML and CSS than with PowerPoint. See the example slideshow.html for instructions.
+# Use [html-slideshow](https://github.com/robflaherty/html-slideshow) on dynamically generated content
+Hacks [html-slideshow](https://github.com/robflaherty/html-slideshow) for use with Javascript generated DOM content.
+Originally written to integrate html-slideshow with a Javascript based wiki such as creole.js
 
-## Demo
-[View the demo](http://www.ravelrumba.com/code/demos/html-slideshow/slideshow.html)
-
-## To do list
-* Add IE support
-* Add touch UI support
-* Add WAI-ARIA attributes
+# Usage
+    <script src="resources/htmlSlides.js"></script>
+    <script>
+    /* ... modify DOM with Javascript ... */
+    slider.init({ hideMenu: true });
+    </script>
