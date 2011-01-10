@@ -50,3 +50,4 @@ nav button { float: left; border: 0; width: 26px; height: 25px; text-indent: -99
 .slide li { list-style-type: disc; margin-left: 40px; font-size: 20px; }
 .slide pre { font-size:20px; font-family: monospace; }
 .slide hgroup {margin: 0 0 20px;}
+.slide table { font-size: 20px; }
